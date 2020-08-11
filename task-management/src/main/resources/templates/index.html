@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layouts/layout}">
+
+<head>
+<meta http-equiv="X-UA-Compatible" charset="utf-8" />
+<title>Title</title>
+</head>
+
+<body>
+	<th:block layout:fragment="content">
+
+		<!-- Page Heading -->
+		<div class="d-sm-flex align-items-center justify-content-between mb-4">
+			<h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+			<a href="#"
+				class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+				class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+		</div>
+
+		<!-- Content Row -->
+		<div class="row">
+
+			<!-- Earnings (Monthly) Card Example -->
+			<div class="col-xl-3 col-md-6 mb-4">
+				<div class="card border-left-primary shadow h-100 py-2">
+					<div class="card-body">
+						<div class="row no-gutters align-items-center">
+							<div class="col mr-2">
+								<div
+									class="text-xs font-weight-bold text-primary text-uppercase mb-1">New
+									task</div>
+								<div class="h5 mb-0 font-weight-bold text-gray-800"
+									th:text="${newState}">200</div>
+							</div>
+							<div class="col-auto">
+								<i class="fas fa-calendar fa-2x text-gray-300"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Earnings (Monthly) Card Example -->
+			<div class="col-xl-3 col-md-6 mb-4">
+				<div class="card border-left-success shadow h-100 py-2">
+					<div class="card-body">
+						<div class="row no-gutters align-items-center">
+							<div class="col mr-2">
+								<div
+									class="text-xs font-weight-bold text-success text-uppercase mb-1">Todo
+									task</div>
+								<div class="h5 mb-0 font-weight-bold text-gray-800"
+									th:text="${todoState}">$215,000</div>
+							</div>
+							<div class="col-auto">
+								<i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Earnings (Monthly) Card Example -->
+			<div class="col-xl-3 col-md-6 mb-4">
+				<div class="card border-left-info shadow h-100 py-2">
+					<div class="card-body">
+						<div class="row no-gutters align-items-center">
+							<div class="col mr-2">
+								<div
+									class="text-xs font-weight-bold text-info text-uppercase mb-1">Done
+									Task</div>
+								<div class="row no-gutters align-items-center">
+									<div class="col-auto">
+										<div class="h5 mb-0 mr-3 font-weight-bold text-gray-800"
+											th:text="${doneState}">50%</div>
+									</div>
+									<div class="col">
+										<div class="progress progress-sm mr-2">
+											<div class="progress-bar bg-info" role="progressbar"
+												style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+												aria-valuemax="100"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-auto">
+								<i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Pending Requests Card Example -->
+			<div class="col-xl-3 col-md-6 mb-4">
+				<div class="card border-left-warning shadow h-100 py-2">
+					<div class="card-body">
+						<div class="row no-gutters align-items-center">
+							<div class="col mr-2">
+								<div
+									class="text-xs font-weight-bold text-warning text-uppercase mb-1">All
+									Tasks</div>
+								<div class="h5 mb-0 font-weight-bold text-gray-800"
+									th:text="${allState}">18</div>
+							</div>
+							<div class="col-auto">
+								<i class="fas fa-comments fa-2x text-gray-300"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<table class="table">
+				<thead class="thead-dark">
+					<tr>
+						<th class="text-center" scope="col">NEW</th>
+						<th class="text-center" scope="col">TODO</th>
+						<th class="text-center" scope="col">DONE</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<div class="col-lg-12" th:each="taskNew : ${listNew}">
+
+								<!-- Dropdown Card Example -->
+								<div class="card shadow mb-4">
+									<!-- Card Header - Dropdown -->
+									<div
+										class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-secondary">
+										<h6 class="m-0 font-weight-bold text-light"
+											th:text="${taskNew.name}">Dropdown Card Example</h6>
+										<div class="dropdown no-arrow">
+											<a class="dropdown-toggle" href="#" role="button"
+												id="dropdownMenuLink" data-toggle="dropdown"
+												aria-haspopup="true" aria-expanded="false"> <i
+												class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+											</a>
+											<div
+												class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+												aria-labelledby="dropdownMenuLink">
+												<div class="dropdown-header">Actions:</div>
+												<a class="dropdown-item"
+													th:href="@{toDo?idTask=}+${taskNew.id}">Todo</a>
+											</div>
+										</div>
+									</div>
+									<!-- Card Body -->
+									<div class="card-body" th:text="${taskNew.description}"></div>
+								</div>
+							</div>
+						</td>
+						<td>
+							<div class="col-lg-12" th:each="taskTodo : ${listTodo}">
+
+								<!-- Dropdown Card Example -->
+								<div class="card shadow mb-4">
+									<!-- Card Header - Dropdown -->
+									<div
+										class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-warning">
+										<h6 class="m-0 font-weight-bold text-dark"
+											th:text="${taskTodo.name}"></h6>
+										<div class="dropdown no-arrow">
+											<a class="dropdown-toggle" href="#" role="button"
+												id="dropdownMenuLink" data-toggle="dropdown"
+												aria-haspopup="true" aria-expanded="false"> <i
+												class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+											</a>
+											<div
+												class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+												aria-labelledby="dropdownMenuLink">
+												<div class="dropdown-header">Actions:</div>
+												<a class="dropdown-item"
+													th:href="@{done?idTask=}+${taskTodo.id}">Done</a>
+											</div>
+										</div>
+									</div>
+									<!-- Card Body -->
+									<div class="card-body" th:text="${taskTodo.description}"></div>
+								</div>
+							</div>
+						</td>
+						<td>
+							<div class="col-lg-12" th:each="taskDone : ${listDone}">
+
+								<!-- Dropdown Card Example -->
+								<div class="card shadow mb-4">
+									<!-- Card Header - Dropdown -->
+									<div
+										class="card-header py-3 d-flex flex-row align-items-center justify-content-between bg-success">
+										<h6 class="m-0 font-weight-bold text-dark"
+											th:text="${taskDone.name}"></h6>
+
+									</div>
+									<!-- Card Body -->
+									<div class="card-body" th:text="${taskDone.description}"></div>
+								</div>
+							</div>
+
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+
+	</th:block>
+</body>
+
+</html>
