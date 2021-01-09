@@ -1,13 +1,14 @@
-package com.formation.parking;
+package fr.oscar.batch;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ParkingApplication {
+
+public class OscarFormationsBatchApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ParkingApplication.class, args);
+		SpringApplication.run(OscarFormationsBatchApplication.class, args);
 	}
 
 }

@@ -1,10 +1,10 @@
-package com.formation.parking;
+package fr.oscar.helloworld;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ParkingApplicationTests {
+class HelloWorldApplicationTests {
 
 	@Test
 	void contextLoads() {
